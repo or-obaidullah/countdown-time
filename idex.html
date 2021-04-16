@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comming Soon-2022</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: linear-gradient(to right, #7108d0, #a26bd4);
+            font-family: sans-serif;
+        }
+        .container{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1{
+            color: #fff;
+            font-size: 50px;
+            }
+        .countdown{
+            display: flex;
+            justify-content: center;
+            position: relative;
+        } 
+        .countdown div{
+            font-size: 40px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #fff;
+            font-weight: 600;
+            color: #FD0182;
+        }
+        .countdown div span:last-child{
+            color: #000;
+            display: block;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>COMMING SOON</h1>
+            <h1>2022</h1>
+            <div class="countdown">
+                <div> <span id="day">NA</span><br><span> Days </span> </div>
+                <div><span id="hour">NA</span><br><span> Hours </span></div>
+                <div><span id="minute">NA</span><br><span> Minutes </span></div>
+                <div><span id="second">NA</span><br><span> Seconds </span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setInterval(()=>{
+            let countDate = new Date('Jan 1 2022 00:00:00').getTime();
+
+            let currentTime= new Date().getTime();
+            let gapTime = countDate - currentTime;
+
+            let second = 1000;
+            let minute = second * 60;
+            let hour = minute * 60;
+            let day = hour * 24;
+
+            let d = Math.floor(gapTime/day);
+            let h = Math.floor((gapTime % day) / hour);
+            let m = Math.floor((gapTime % hour)/minute);
+            let s = Math.floor((gapTime % minute)/second);
+
+            if (d < 10) { d="0" + d; }
+            if (m < 10) { m="0" + m; }
+            if (h < 10) { h="0" + h; }
+            if (s < 10) { s="0" + s; }
+            
+            document.getElementById('second').innerText = s;
+            document.getElementById('minute').innerText = m;
+            document.getElementById('hour').innerText = h;
+            document.getElementById('day').innerText = d;
+        },1000);
+
+
+    </script>
+</body>
+</html>
